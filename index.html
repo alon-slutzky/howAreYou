@@ -1,23 +1,78 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>How Are You Generator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <h1>מה קורה?</h1>
-        <p id="response">...</p>
-        <button id="generateBtn">תן לי תשובה!</button>
+      <h1>מה קורה?</h1>
+      <!-- Add the response container below -->
+      <div id="response-container">
+        <!-- This is the response text -->
+        <span id="generated-response" style="visibility: hidden">...</span>
+        <!-- This is the response icon, initially hidden -->
+        <img src="copy.svg" class="copy" alt="Copy" id="copy-icon" />
+      </div>
+      <button id="generateBtn" onclick="generateResponse()">תן לי תשובה</button>
     </div>
-    <script src="script.js"></script>
-</body>
 
+    <div class="form-questions" style="visibility: hidden;">
+      <div class="gender-selection">
+        <h2>המגדר שלך:</h2>
+        <label>
+          <input
+            type="radio"
+            id="userGenderMale"
+            name="userGender"
+            value="male"
+            checked
+          />
+          זכר
+        </label>
+        <label>
+          <input
+            type="radio"
+            id="userGenderFemale"
+            name="userGender"
+            value="female"
+          />
+          נקבה
+        </label>
+      </div>
+
+      <div class="gender-selection">
+        <h2>מגדר השואל:</h2>
+        <label>
+          <input type="radio" name="askerGender" value="male" checked /> זכר
+        </label>
+        <label>
+          <input type="radio" name="askerGender" value="female" /> נקבה
+        </label>
+      </div>
+
+      <div class="question-back-selection">
+        <label>
+          <input type="checkbox" id="includeQuestion" /> לשאול חזרה
+        </label>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
