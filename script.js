@@ -1,7 +1,6 @@
 const btn = document.getElementById("generateBtn");
 const responseEl = document.getElementById("generated-response");
 let firstClick = true;
-let timeout = 0
 
 let responses;
 
@@ -27,14 +26,13 @@ fetch("responses.json")
 
 // Function to generate response
 function generateResponse() {
-
+  const feelStatus = document.querySelector('input[name="feelStatus"]:checked').value;
   const userGender = document.querySelector('input[name="userGender"]:checked').value;
   const askerGender = document.querySelector('input[name="askerGender"]:checked').value;
   const includeQuestion = document.getElementById('includeQuestion');
   
   // Define the key for the response pool based on user and asker gender
-  const responsePoolKey = `${userGender}_to_${askerGender}`;
-  console.log(responsePoolKey)
+  const responsePoolKey = `${userGender}_${feelStatus}`;
 
   const followUpQuestionsKey = `followup_questions_${askerGender}`;
 
@@ -67,8 +65,11 @@ function generateResponse() {
     responseEl.textContent = finalResponse; // Set the response text
     responseEl.style.visibility = 'visible'; // Make the response text visible
     responseEl.style.opacity = 1; 
-    iconEl.style.display = 'inline'; // Make the icon visible
-    iconEl.style.opacity = 1; // Make the icon visible
+    setTimeout(() => {
+      iconEl.style.display = 'inline'; // Make the icon visible
+      iconEl.style.opacity = 1; // Make the icon visible
+    }, 20)
+
 
   }
 
@@ -90,10 +91,68 @@ function copyToClipboard() {
   copyBtn.classList.replace("copy", "check");
 }
 
+document.getElementById('advancedOptions').addEventListener('click', function() {
+  var form = document.querySelector('.form-questions');
+  if (form.style.display === 'none') {
+    form.style.opacity = '0';
+    form.style.display = 'flex';
+    form.style.flexDirection = 'column';
+    form.style.alignItems = 'center';
+    form.style.justifyContent = 'center';
+    advancedOptions.innerHTML = 'הגדרות מתקדמות	&#9653;';
+    setTimeout(function() {
+      form.style.opacity = '1'; // Fade in the form
+    }, 10);
+  } else {
+    form.style.opacity = '0';
+    setTimeout(function() {
+      form.style.display = 'none';
+    }, 500);
+    advancedOptions.innerHTML = 'הגדרות מתקדמות &#9661;';
+  }
+});
+
+document.getElementById('includeQuestion').addEventListener('change', function() {
+  var askerGenderSelection = document.getElementById('askerGenderSelection');
+  if (this.checked) {
+    // Checkbox is selected
+    // Perform actions when the checkbox is selected
+    askerGenderSelection.style.display = 'flex';
+    setTimeout(function() {
+      askerGenderSelection.style.opacity = '1'; // Fade in the asker gender selection
+    }, 10);
+    } else {
+    // Checkbox is deselected
+    // Perform actions when the checkbox is deselected
+    setTimeout(function() {
+      askerGenderSelection.style.opacity = '0'; // Fade out the asker gender selection
+    }, 10);
+    setTimeout(function() {
+      askerGenderSelection.style.display = 'none';
+    }, 200); // Adjust the delay to match the transition duration in CSS
+  }
+});
+
+function toggleGenderSelection() {
+  var checkbox = document.getElementById("checkbox");
+  var genderSelection = document.getElementById("genderSelection");
+
+  if (checkbox.checked) {
+    genderSelection.style.display = "block";
+  } else {
+    genderSelection.style.display = "none";
+  }
+}
 
 // Link the copy button with the copyToClipboard function
 const copyBtn = document.getElementById('copy-icon');
 copyBtn.addEventListener('click', copyToClipboard);
+
+var form = document.querySelector('.form-questions');
+form.style.display = 'none';
+
+askerGenderSelection.style.opacity = '0'; 
+askerGenderSelection.style.display = 'none';
 
 // SVG code for alternate icon
 const copyIcon = 'copy.svg';

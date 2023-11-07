@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>How Are You Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
       rel="stylesheet"
@@ -17,6 +18,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
   </head>
 
   <body>
@@ -32,9 +34,29 @@
       <button id="generateBtn" onclick="generateResponse()">תן לי תשובה</button>
     </div>
 
-    <div class="form-questions" style="visibility: hidden;">
+    <button id="advancedOptions"> הגדרות מתקדמות &#9661;</button>
+
+    <div class="form-questions">
       <div class="gender-selection">
-        <h2>המגדר שלך:</h2>
+        <h3>מה המרגש:</h3>
+        <label>
+          <input
+            type="radio"
+            id="feelGood"
+            name="feelStatus"
+            value="good"
+            checked
+          />
+          טוב
+        </label>
+        <label>
+          <input type="radio" id="feelBad" name="feelStatus" value="bad" />
+          לא טוב
+        </label>
+      </div>
+
+      <div class="gender-selection">
+        <h3>המגדר שלך:</h3>
         <label>
           <input
             type="radio"
@@ -56,8 +78,14 @@
         </label>
       </div>
 
-      <div class="gender-selection">
-        <h2>מגדר השואל:</h2>
+      <div class="question-back-selection">
+        <label>
+          <input type="checkbox" id="includeQuestion" /> לשאול חזרה
+        </label>
+      </div>
+
+      <div class="gender-selection" id="askerGenderSelection">
+        <h3>מגדר השואל:</h3>
         <label>
           <input type="radio" name="askerGender" value="male" checked /> זכר
         </label>
@@ -66,11 +94,7 @@
         </label>
       </div>
 
-      <div class="question-back-selection">
-        <label>
-          <input type="checkbox" id="includeQuestion" /> לשאול חזרה
-        </label>
-      </div>
+
     </div>
 
     <script src="script.js"></script>
