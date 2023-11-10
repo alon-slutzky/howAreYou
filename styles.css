@@ -16,28 +16,22 @@ body {
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
-  margin-bottom: -20px; /* Overlap the form slightly */
 }
 #advancedOptions {
   background: none;
   border: none;
   cursor: pointer;
+  position: absolute;
   font-size: 0.8rem; /* Or any size you prefer */
-  margin-top: 30px;
-  height: 42px;
+
 }
 
 .form-questions {
+  position: absolute;
   width: 70%;
   max-width: 600px;
   text-align: center;
   display: none;
-  position: absolute;
-  top: 59%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  padding: 10px;
-  margin-top: 30px; /* Increase as needed */
   color: #f0f0f0; /* Light text color for visibility */
   pointer-events: none; /* Add this line */
   opacity: 0;
@@ -51,7 +45,6 @@ body {
 .form-questions h3,
 .form-questions label {
   color: #f0f0f0; /* This assumes light-colored text will be visible */
-  
 }
 
 h1,
@@ -72,43 +65,43 @@ h2 {
   color: #fff; /* Change color for visibility against the new form background */
 }
 .gender-selection {
-    display: flex;
-    align-items: center;
-  }
-  
-  .gender-selection h2,
-  h3 {
-    margin-right: 20px;
-  }
-  
-  .gender-selection label {
-    margin-right: 10px;
-    white-space: nowrap;
-  }
-  
-  .gender-selection,
-  .question-back-selection {
-    margin-bottom: 2px;
-  }
-  
-  .gender-selection label,
-  .question-back-selection label {
-    font-size: 1rem;
-    color: #fff;
-    margin-right: 10px;
-    cursor: pointer;
-  }
-  
-  .gender-selection input[type="radio"],
-  .question-back-selection input[type="checkbox"] {
-    margin-left: 5px;
-    cursor: pointer;
-  }
-  
-  #askerGenderSelection {
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
+  display: flex;
+  align-items: center;
+}
+
+.gender-selection h2,
+h3 {
+  margin-right: 20px;
+}
+
+.gender-selection label {
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.gender-selection,
+.question-back-selection {
+  margin-bottom: 2px;
+}
+
+.gender-selection label,
+.question-back-selection label {
+  font-size: 1rem;
+  color: #fff;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.gender-selection input[type="radio"],
+.question-back-selection input[type="checkbox"] {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+#askerGenderSelection {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
 
 button {
   font-family: "Varela Round", sans-serif;

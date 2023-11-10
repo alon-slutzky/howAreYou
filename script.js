@@ -144,6 +144,19 @@ function toggleGenderSelection() {
   }
 }
 
+function updateElementPositions() {
+  const container = document.querySelector('.container');
+  const advancedOptions = document.getElementById('advancedOptions');
+  const formQuestions = document.querySelector('.form-questions');
+
+  const containerHeight = container.offsetHeight;
+  const buttonHeight = advancedOptions.offsetHeight;
+  const space = 20; // Space between elements
+
+  advancedOptions.style.top = `calc(50% + ${containerHeight / 2}px + ${space}px)`;
+  formQuestions.style.top = `calc(50% + ${containerHeight / 2}px + ${buttonHeight}px + ${space}px)`;
+}
+
 // Link the copy button with the copyToClipboard function
 const copyBtn = document.getElementById('copy-icon');
 copyBtn.addEventListener('click', copyToClipboard);
@@ -157,3 +170,6 @@ askerGenderSelection.style.display = 'none';
 // SVG code for alternate icon
 const copyIcon = 'copy.svg';
 const altIcon = 'check.svg';
+
+window.onload = updateElementPositions;
+window.onresize = updateElementPositions;
