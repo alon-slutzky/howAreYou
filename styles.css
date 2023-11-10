@@ -1,8 +1,12 @@
 html {
-    height: 100%; /* Ensure the html element covers the viewport height */
-    background: linear-gradient(120deg, #0f2027, #2c5364); /* Set your background here */
-    background-attachment: fixed; /* Keep the background fixed when scrolling */
-  }
+  height: 100%; /* Ensure the html element covers the viewport height */
+  background: linear-gradient(
+    120deg,
+    #0f2027,
+    #2c5364
+  ); /* Set your background here */
+  background-attachment: fixed; /* Keep the background fixed when scrolling */
+}
 
 body {
   font-family: "Varela Round", sans-serif;
@@ -16,28 +20,32 @@ body {
 }
 
 @media screen and (max-width: 767px) {
-    body {
-      min-height: 100%; /* Stretch to at least the full height of the content */
-    }
+  body {
+    min-height: 100%; /* Stretch to at least the full height of the content */
   }
+}
 
 .container {
-margin-top: -33vh;
+  display: flex; /* Use flexbox to layout children */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: space-between; /* Align children to start and end of container */
+  margin-top: -33vh;
   text-align: center;
+  min-height: 245px;
   background: rgba(240, 240, 240, 0.95);
   width: 70%; /* Responsive width */
   max-width: 600px; /* Max width for large screens */
-  padding: 40px;
+  padding: 30px;
   border-radius: 15px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
 }
+
 #advancedOptions {
   background: none;
   border: none;
   cursor: pointer;
   position: absolute;
   font-size: 0.8rem; /* Or any size you prefer */
-
 }
 
 .form-questions {
@@ -132,11 +140,16 @@ button {
 button:hover {
   background-color: #0f2027;
 }
+#generateBtn {
+    align-self: center; /* Center button horizontally */
+    margin-top: auto; /* Push the button to the bottom */
+  }
+
 
 #generated-response {
   visibility: hidden;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 40px;
   font-size: 1.2rem;
   opacity: 0;
@@ -154,7 +167,7 @@ button:hover {
   text-align: center;
   margin-top: 15px; /* Space between the icon and the text */
   margin-left: 8px; /* Space between the icon and the text */
-  margin-bottom: 37px;
+  margin-bottom: 18px;
   display: none;
   opacity: 0;
   transition: opacity 0.3s ease;
