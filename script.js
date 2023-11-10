@@ -149,12 +149,15 @@ function updateElementPositions() {
   const advancedOptions = document.getElementById('advancedOptions');
   const formQuestions = document.querySelector('.form-questions');
 
-  const containerHeight = container.offsetHeight;
-  const buttonHeight = advancedOptions.offsetHeight;
-  const space = 20; // Space between elements
+  // Get the bounding rectangle of the container, including its absolute position on the page
+  const containerRect = container.getBoundingClientRect();
 
-  advancedOptions.style.top = `calc(50% + ${containerHeight / 2}px + ${space}px)`;
-  formQuestions.style.top = `calc(50% + ${containerHeight / 2}px + ${buttonHeight}px + ${space}px)`;
+  // Calculate the positions based on the height of the elements and the window's width
+  const buttonTopPosition = containerRect.bottom + window.scrollY + 10; // 10px space below the container
+  const formTopPosition = buttonTopPosition + advancedOptions.offsetHeight + 10; // 10px space below the button
+
+  advancedOptions.style.top = `${buttonTopPosition}px`;
+  formQuestions.style.top = `${formTopPosition}px`;
 }
 
 // Link the copy button with the copyToClipboard function
@@ -171,5 +174,6 @@ askerGenderSelection.style.display = 'none';
 const copyIcon = 'copy.svg';
 const altIcon = 'check.svg';
 
-window.onload = updateElementPositions;
-window.onresize = updateElementPositions;
+window.addEventListener('load', updateElementPositions);
+window.addEventListener('resize', updateElementPositions);
+window.addEventListener('orientationchange', updateElementPositions);
