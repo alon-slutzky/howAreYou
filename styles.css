@@ -1,14 +1,25 @@
+html {
+    height: 100%; /* Ensure the html element covers the viewport height */
+    background: linear-gradient(120deg, #0f2027, #2c5364); /* Set your background here */
+    background-attachment: fixed; /* Keep the background fixed when scrolling */
+  }
+
 body {
   font-family: "Varela Round", sans-serif;
   background: linear-gradient(120deg, #0f2027, #2c5364);
-  height: 98vh;
+  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column; /* Add this for vertical stacking */
   align-items: center;
   justify-content: center;
 }
 
-
+@media screen and (max-width: 767px) {
+    body {
+      min-height: 100%; /* Stretch to at least the full height of the content */
+    }
+  }
 
 .container {
 margin-top: -33vh;

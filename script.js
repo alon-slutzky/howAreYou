@@ -145,6 +145,7 @@ function toggleGenderSelection() {
 }
 
 function updateElementPositions() {
+  const body = document.querySelector('.body');
   const container = document.querySelector('.container');
   const advancedOptions = document.getElementById('advancedOptions');
   const formQuestions = document.querySelector('.form-questions');
@@ -156,6 +157,7 @@ function updateElementPositions() {
   const buttonTopPosition = containerRect.bottom + window.scrollY + 10; // 10px space below the container
   const formTopPosition = buttonTopPosition + advancedOptions.offsetHeight + 10; // 10px space below the button
 
+  // body.style.height = '98vh';
   advancedOptions.style.top = `${buttonTopPosition}px`;
   formQuestions.style.top = `${formTopPosition}px`;
 }
