@@ -8,7 +8,10 @@ body {
   justify-content: center;
 }
 
+
+
 .container {
+margin-top: -33vh;
   text-align: center;
   background: rgba(240, 240, 240, 0.95);
   width: 70%; /* Responsive width */
