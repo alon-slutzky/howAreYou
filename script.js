@@ -3,6 +3,7 @@ const responseEl = document.getElementById("generated-response");
 let firstClick = true;
 
 let responses;
+let lastTwoResponses = [];
 
 // Fetch the responses from the JSON file
 fetch("responses.json")
@@ -36,10 +37,15 @@ function generateResponse() {
 
   const followUpQuestionsKey = `followup_questions_${askerGender}`;
 
-  // Select a random response from the appropriate pool
-  const randomResponse = responses[responsePoolKey][Math.floor(Math.random() * responses[responsePoolKey].length)];
+  function getUniqueResponse() {
+    let potentialResponse;
+    do {
+      potentialResponse = responses[responsePoolKey][Math.floor(Math.random() * responses[responsePoolKey].length)];
+    } while (lastTwoResponses.includes(potentialResponse)); // Keep trying until the response is not in the last two
+    return potentialResponse;
+  }
 
-  let finalResponse = randomResponse;
+  let finalResponse = getUniqueResponse();
 
   // If a follow-up question should be included, select one and append it
   if (includeQuestion.checked) {
@@ -76,6 +82,8 @@ function generateResponse() {
   firstClick = false;
   iconEl.style.display = 'inline'; // Make the icon visible
 }
+
+
 
 // copyToClipboard function updated to copy the generated response
 function copyToClipboard() {
